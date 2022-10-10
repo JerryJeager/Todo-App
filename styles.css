@@ -74,11 +74,14 @@ header {
     display: none;
 }
 .input-todo{
-    padding: .6em 1.2rem .6em .9em;
+    padding: .6em 1.2em .6em .9em;
     width: 85%;
     margin: 0 auto;
     border-radius: 5px;
     background-color: var(--very-dark-desaturated-blue);
+}
+.input-todo2{
+    background-color:hsl(0, 0%, 100%);
 }
 .input-todo-form{
     /* width: 100%; */
@@ -90,7 +93,6 @@ header {
 }
 .type-todo{
     border: none;
-    outline: none;
     background-color: transparent;
     /* border: 2px solid green; */
     width: 85%;
@@ -98,11 +100,14 @@ header {
     font-size: 1.06rem;
     font-family: 'Josefin Sans', sans-serif;
     caret-color: var(--bright-blue);
-}
-.type-todo:active{
     outline: none;
 }
+.type-todo2{
+    color: var(--very-dark-grayish-blue);
+}
+
 .type-todo::placeholder{
+    margin-top: 1.2em;
     color: var(--dark-grayish-blue);
     font-family: 'Josefin Sans', sans-serif;
     /* font-size: 1rem; */
@@ -114,4 +119,72 @@ header {
     border-radius: 50%;
     border: none;
     border: 1px solid var(--dark-grayish-blue);
+}
+.display-todo{
+    width: 85%;
+    margin: 1.2rem auto;
+    border-radius: 5px;
+    background-color: var(--very-dark-desaturated-blue);
+    height: auto;
+    /* border: 2px solid var(--very-dark-desaturated-blue); */
+}
+.display-todo2{
+    background-color: hsl(0, 0%, 100%);
+}
+.todo{
+    
+    background-color: transparent;
+    padding: .6em .7em .6em .9em;
+    color: var(--light-grayish-blue);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: .02rem solid var(--dark-grayish-blue);
+    margin-bottom: 0;
+}
+.todo2{
+    color: var(--very-dark-grayish-blue);
+}
+.check-todo{
+    width: 87%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+    transition: .4s;
+}
+
+.check-btn{
+    width: 27px;
+    height: 27px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    border: 1px solid var(--dark-grayish-blue);
+    transition: .4s;
+}
+.check-btn:hover{
+    border: 1px solid var(--check-background-start);
+}
+.checked-btn{
+    width: 27px;
+    height: 27px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    border: 1px solid var(--dark-grayish-blue);
+    background: linear-gradient(135deg, var(--check-background-start), var(--check-background-end));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.new-todo{
+    width: 84%;
+    color: var(--light-grayish-blue);
+    /* border: 2px solid white; */
+}
+.checked-todo{
+    text-decoration: line-through;
+    color: var(--dark-grayish-blue);
+}
+.del-todo{
+    align-self: center;
 }
