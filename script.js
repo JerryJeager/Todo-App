@@ -42,7 +42,9 @@ enterTodo.addEventListener("click", () => {
     }
     
     displayTodoList()
+    // deleteTodo()
 })
+
 function displayTodoList() {
     let todoParse = ""
     if (newTodo.value !== "") {
@@ -70,6 +72,7 @@ function displayTodoList() {
         checkTodo()
     }
 }
+
 function checkTodo() {
     const checkTodo = document.querySelectorAll(".check-btn")
     checkTodo.forEach(btn => {
@@ -77,7 +80,16 @@ function checkTodo() {
             btn.style.border = "none"
             btn.classList.add("checked-btn")
             btn.innerHTML = `<img src="./images/icon-check.svg" alt="">`
-            
+            btn.parentElement.querySelector('p').classList.add("checked-todo")
+        })
+    })
+    // Deleting a todo
+    const delTodoBtn = document.querySelectorAll(".del-todo")
+    delTodoBtn.forEach(del => {
+        del.addEventListener("click", () => {
+            console.log("clicked")
+            console.log(del.parentElement)
+            del.parentElement.classList.add("deleted")
         })
     })
 }

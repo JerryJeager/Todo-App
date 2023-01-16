@@ -24,6 +24,7 @@
     --very-dark-grayish-blue1: hsl(233, 14%, 35%);
     --very-dark-grayish-blue2: hsl(237, 14%, 26%);
 }
+
 html, body{
     font-family: 'Josefin Sans', sans-serif;
 }
@@ -179,7 +180,7 @@ header {
 .new-todo{
     width: 84%;
     color: var(--light-grayish-blue);
-    /* border: 2px solid white; */
+    align-self: center;
 }
 .checked-todo{
     text-decoration: line-through;
@@ -187,4 +188,8 @@ header {
 }
 .del-todo{
     align-self: center;
+}
+.deleted{
+    transition: .4s;
+    display: none;
 }
