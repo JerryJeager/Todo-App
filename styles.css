@@ -132,6 +132,7 @@ header {
 .display-todo2{
     background-color: hsl(0, 0%, 100%);
 }
+
 .todo{
     
     background-color: transparent;
@@ -141,6 +142,15 @@ header {
     justify-content: space-between;
     border-bottom: .02rem solid var(--dark-grayish-blue);
     margin-bottom: 0;
+}
+.todo-info{
+    align-items: center;
+    height: 47px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    display: none;
 }
 .todo2{
     color: var(--very-dark-grayish-blue);
@@ -165,6 +175,7 @@ header {
 .check-btn:hover{
     border: 1px solid var(--check-background-start);
 }
+
 .checked-btn{
     width: 27px;
     height: 27px;
@@ -192,4 +203,9 @@ header {
 .deleted{
     transition: .4s;
     display: none;
+}
+.info-txt{
+    color: var(--light-grayish-blue);
+    font-size: .8rem;
+    opacity: .7;
 }

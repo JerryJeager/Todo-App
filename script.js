@@ -10,6 +10,7 @@ const todoList = document.querySelector(".todo-content")
 const displayTodoListItems = document.querySelector(".display-todo")
 const todoBg = document.querySelector(".todo")
 const todoArr = []
+let todoNum = 0
 
 let darkMode = true
 lightTheme.addEventListener("click", () => {
@@ -40,20 +41,20 @@ enterTodo.addEventListener("click", () => {
     }else{
         displayTodoListItems.style.border = "2px solid hsl(0, 0%, 100%)"
     }
-    
-    displayTodoList()
+        displayTodoList()
     // deleteTodo()
 })
 
 function displayTodoList() {
     let todoParse = ""
-    if (newTodo.value !== "") {
+    let todoInfoParse = ""
+    let items = ""
+    if (newTodo.value) {
         todoArr.push(newTodo.value)
         localStorage.setItem("todo", JSON.stringify(todoArr))
         newTodo.value = ""
         for (let i = 0; i < todoArr.length; i++) {
             todoParse += `
-            <div class="todo">
                 <div class="check-todo">
                     <button type="submit" class="check-btn"></button>
                     
@@ -64,11 +65,20 @@ function displayTodoList() {
                 <div class="del-todo">
                     <img src="./images/icon-cross.svg" alt="delete- button" class="del-btn">
                 </div>
-            </div>
+            
             `
             todoArr.pop()
         }
-        displayTodoListItems.innerHTML += todoParse
+        todoInfoParse = document.querySelector(".todo-info")
+        document.querySelector('.todo-info').style.display = "flex";
+        //updating number of todo left
+        todoNum = todoNum + 1
+        document.querySelector(".todo-number").textContent = `${todoNum} items left`
+        //adding todo before the todo info containing number of todo left
+        items = document.createElement("div")
+        items.classList.add("todo")
+        items.innerHTML = todoParse
+        document.querySelector('.todo-info').parentNode.insertBefore(items, todoInfoParse)
         checkTodo()
     }
 }
