@@ -56,7 +56,7 @@ function displayTodoList() {
         for (let i = 0; i < todoArr.length; i++) {
             todoParse += `
                 <div class="check-todo">
-                    <button type="submit" class="check-btn"></button>
+                    <button type="submit" class="check-btn" onclick="reduceTodoNum()"></button>
                     
                     <div class="new-todo">
                         <p class="todo-content">${todoArr[i]}</p>
@@ -72,8 +72,8 @@ function displayTodoList() {
         todoInfoParse = document.querySelector(".todo-info")
         document.querySelector('.todo-info').style.display = "flex";
         //updating number of todo left
-        todoNum = todoNum + 1
-        document.querySelector(".todo-number").textContent = `${todoNum} items left`
+        // todoNum = todoNum + 1
+        document.querySelector(".todo-number").textContent = `${++todoNum} items left`
         //adding todo before the todo info containing number of todo left
         items = document.createElement("div")
         items.classList.add("todo")
@@ -85,6 +85,7 @@ function displayTodoList() {
 
 function checkTodo() {
     const checkTodo = document.querySelectorAll(".check-btn")
+    const checkTodoInfo = document.getElementsByClassName("check-btn")
     checkTodo.forEach(btn => {
         btn.addEventListener("click", () => {
             btn.style.border = "none"
@@ -97,9 +98,11 @@ function checkTodo() {
     const delTodoBtn = document.querySelectorAll(".del-todo")
     delTodoBtn.forEach(del => {
         del.addEventListener("click", () => {
-            console.log("clicked")
-            console.log(del.parentElement)
             del.parentElement.classList.add("deleted")
         })
     })
+}
+
+function reduceTodoNum(){
+    document.querySelector(".todo-number").textContent = `${--todoNum} items left`
 }
