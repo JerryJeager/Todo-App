@@ -62,7 +62,7 @@ function displayTodoList() {
                         <p class="todo-content">${todoArr[i]}</p>
                     </div>
                 </div>
-                <div class="del-todo">
+                <div class="del-todo" onclick="reduceTodoNum()">
                     <img src="./images/icon-cross.svg" alt="delete- button" class="del-btn">
                 </div>
             
