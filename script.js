@@ -101,7 +101,8 @@ function displayTodoList() {
 function checkTodo() {
     const checkTodo = document.querySelectorAll(".check-btn")
     // const checkTodoInfo = document.getElementsByClassName("check-btn")
-    checkTodo.forEach(btn => {
+    const btn = checkTodo[checkTodo.length - 1];
+    // checkTodo.forEach(btn => {
         btn.addEventListener("click", () => {
             btn.style.border = "none"
             btn.classList.add("checked-btn")
@@ -109,19 +110,22 @@ function checkTodo() {
             btn.parentElement.querySelector('p').classList.add("checked-todo")
             updateTodoNum()
         })
-    })
+    // })
 }
 
 function deleteTodo() {
-    const delTodoBtn = document.querySelectorAll(".del-todo")
-    delTodoBtn.forEach(btn => {
+    console.log('DeleteTodo called');
+    const delTodoBtn = document.querySelectorAll(".del-todo");
+    const btn = delTodoBtn[delTodoBtn.length - 1];
+    // delTodoBtn.forEach(btn => {
         btn.addEventListener("click", (e) => {
             btn.parentElement.classList.add("deleted")
             if (e.target.parentNode.parentNode.firstElementChild.firstElementChild.classList.contains("checked-btn"))
                 return
             updateTodoNum()
+            console.log('Deleted');
         })
-    })
+    // })
 }
 
 
