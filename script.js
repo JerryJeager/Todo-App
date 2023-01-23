@@ -11,6 +11,14 @@ const displayTodoListItems = document.querySelector(".display-todo")
 const todoBg = document.querySelector(".todo")
 const todoArr = []
 let todoNum = 0
+const todoItemsList = []
+let numberOfTodo = 0
+
+// class Todo{
+//     constructor(){
+
+//     }
+// }
 
 let darkMode = true
 lightTheme.addEventListener("click", () => {
@@ -36,12 +44,12 @@ darkTheme.addEventListener("click", () => {
     // todoBg.classList.remove("todo2")
 })
 enterTodo.addEventListener("click", () => {
-    if(darkMode == true){
+    if (darkMode == true) {
         displayTodoListItems.style.border = "2px solid var(--very-dark-desaturated-blue)"
-    }else{
+    } else {
         displayTodoListItems.style.border = "2px solid hsl(0, 0%, 100%)"
     }
-        displayTodoList()
+    displayTodoList()
     // deleteTodo()
 })
 
@@ -50,59 +58,75 @@ function displayTodoList() {
     let todoInfoParse = ""
     let items = ""
     if (newTodo.value) {
+        numberOfTodo = document.getElementsByClassName('todo-content').length
         todoArr.push(newTodo.value)
+        // todoItemsList.push(newTode.value)
         localStorage.setItem("todo", JSON.stringify(todoArr))
         newTodo.value = ""
         for (let i = 0; i < todoArr.length; i++) {
             todoParse += `
                 <div class="check-todo">
-                    <button type="submit" class="check-btn" onclick="reduceTodoNum()"></button>
+                    <button type="submit" class="check-btn"></button>
                     
                     <div class="new-todo">
                         <p class="todo-content">${todoArr[i]}</p>
                     </div>
                 </div>
-                <div class="del-todo" onclick="reduceTodoNum()">
+                <div class="del-todo">
                     <img src="./images/icon-cross.svg" alt="delete- button" class="del-btn">
                 </div>
             
             `
             todoArr.pop()
         }
+
         todoInfoParse = document.querySelector(".todo-info")
         document.querySelector('.todo-info').style.display = "flex";
         //updating number of todo left
-        // todoNum = todoNum + 1
-        document.querySelector(".todo-number").textContent = `${++todoNum} items left`
+        todoNum = todoNum + 1
+        document.querySelector(".todo-number").textContent = `${todoNum} items left`
+        // updateTodoNum((numberOfTodo + 1))
         //adding todo before the todo info containing number of todo left
         items = document.createElement("div")
         items.classList.add("todo")
         items.innerHTML = todoParse
         document.querySelector('.todo-info').parentNode.insertBefore(items, todoInfoParse)
+
+        //enabling checking of Todos
         checkTodo()
+        deleteTodo()
     }
 }
 
 function checkTodo() {
     const checkTodo = document.querySelectorAll(".check-btn")
-    const checkTodoInfo = document.getElementsByClassName("check-btn")
+    // const checkTodoInfo = document.getElementsByClassName("check-btn")
     checkTodo.forEach(btn => {
         btn.addEventListener("click", () => {
             btn.style.border = "none"
             btn.classList.add("checked-btn")
             btn.innerHTML = `<img src="./images/icon-check.svg" alt="">`
             btn.parentElement.querySelector('p').classList.add("checked-todo")
-        })
-    })
-    // Deleting a todo
-    const delTodoBtn = document.querySelectorAll(".del-todo")
-    delTodoBtn.forEach(del => {
-        del.addEventListener("click", () => {
-            del.parentElement.classList.add("deleted")
+            updateTodoNum()
         })
     })
 }
 
-function reduceTodoNum(){
-    document.querySelector(".todo-number").textContent = `${--todoNum} items left`
+function deleteTodo() {
+    const delTodoBtn = document.querySelectorAll(".del-todo")
+    delTodoBtn.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            btn.parentElement.classList.add("deleted")
+            if (e.target.parentNode.parentNode.firstElementChild.firstElementChild.classList.contains("checked-btn"))
+                return
+            updateTodoNum()
+        })
+    })
 }
+
+
+function updateTodoNum() {
+    document.querySelector(".todo-number").textContent = `${todoNum--} items left`
+}
+
+
