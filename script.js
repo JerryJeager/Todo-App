@@ -9,6 +9,7 @@ const inputTodoBg = document.querySelector(".input-todo")
 const todoList = document.querySelector(".todo-content")
 const displayTodoListItems = document.querySelector(".display-todo")
 const todoBg = document.querySelector(".todo")
+const displayedTodos = document.querySelectorAll(".todo").values
 const todoArr = []
 let todoNum = 0
 const todoItemsList = []
@@ -49,8 +50,8 @@ enterTodo.addEventListener("click", () => {
     } else {
         displayTodoListItems.style.border = "2px solid hsl(0, 0%, 100%)"
     }
+    document.querySelector(".display-todo").style.display = "block"
     displayTodoList()
-    // deleteTodo()
 })
 
 function displayTodoList() {
@@ -92,45 +93,45 @@ function displayTodoList() {
         items.innerHTML = todoParse
         document.querySelector('.todo-info').parentNode.insertBefore(items, todoInfoParse)
 
-        //enabling checking of Todos
+        //enabling checking and deleting of Todos
         checkTodo()
         deleteTodo()
+        // clearing completed todo
+        document.querySelector(".clear-completed").addEventListener("click", clearCompleted)
     }
 }
 
 function checkTodo() {
     const checkTodo = document.querySelectorAll(".check-btn")
-    // const checkTodoInfo = document.getElementsByClassName("check-btn")
     const btn = checkTodo[checkTodo.length - 1];
-    // checkTodo.forEach(btn => {
-        btn.addEventListener("click", () => {
-            btn.style.border = "none"
-            btn.classList.add("checked-btn")
-            btn.innerHTML = `<img src="./images/icon-check.svg" alt="">`
-            btn.parentElement.querySelector('p').classList.add("checked-todo")
-            updateTodoNum()
-        })
-    // })
+    btn.addEventListener("click", () => {
+        btn.style.border = "none"
+        btn.classList.add("checked-btn")
+        btn.innerHTML = `<img src="./images/icon-check.svg" alt="">`
+        btn.parentElement.querySelector('p').classList.add("checked-todo")
+        btn.parentElement.parentElement.classList.add("clear-completed-todo")
+        updateTodoNum()
+    }, { once: true })
 }
 
 function deleteTodo() {
     console.log('DeleteTodo called');
     const delTodoBtn = document.querySelectorAll(".del-todo");
     const btn = delTodoBtn[delTodoBtn.length - 1];
-    // delTodoBtn.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            btn.parentElement.classList.add("deleted")
-            if (e.target.parentNode.parentNode.firstElementChild.firstElementChild.classList.contains("checked-btn"))
-                return
-            updateTodoNum()
-            console.log('Deleted');
-        })
-    // })
+    btn.addEventListener("click", (e) => {
+        btn.parentElement.classList.add("deleted")
+        if (e.target.parentNode.parentNode.firstElementChild.firstElementChild.classList.contains("checked-btn"))
+            return
+        updateTodoNum()
+    })
 }
-
 
 function updateTodoNum() {
-    document.querySelector(".todo-number").textContent = `${todoNum--} items left`
+    document.querySelector(".todo-number").textContent = `${--todoNum} items left`
 }
 
-
+function clearCompleted(){
+    console.log("clear")
+    const clearCompletedTodo = document.querySelectorAll(".clear-completed-todo")
+    clearCompletedTodo.forEach(item => item.style.display = "none")
+}
