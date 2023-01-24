@@ -32,7 +32,7 @@ html, body{
     background-color: var(--very-dark-blue);
 }
 
-.body-bg2 {
+.body-bg-light {
     background-color: var(--very-light-gray);
 }
 
@@ -45,7 +45,7 @@ html, body{
     background: url('./images/bg-mobile-dark.jpg') center/cover no-repeat;
 }
 
-.todo-img2 {
+.todo-img-light {
     background: url('./images/bg-mobile-light.jpg') center/cover no-repeat;
 }
 
@@ -81,7 +81,7 @@ header {
     border-radius: 5px;
     background-color: var(--very-dark-desaturated-blue);
 }
-.input-todo2{
+.input-todo-light{
     background-color:hsl(0, 0%, 100%);
 }
 .input-todo-form{
@@ -95,7 +95,6 @@ header {
 .type-todo{
     border: none;
     background-color: transparent;
-    /* border: 2px solid green; */
     width: 85%;
     color: var(--light-grayish-blue);
     font-size: 1.06rem;
@@ -103,7 +102,7 @@ header {
     caret-color: var(--bright-blue);
     outline: none;
 }
-.type-todo2{
+.type-todo-light{
     color: var(--very-dark-grayish-blue);
 }
 
@@ -111,7 +110,6 @@ header {
     margin-top: 1.2em;
     color: var(--dark-grayish-blue);
     font-family: 'Josefin Sans', sans-serif;
-    /* font-size: 1rem; */
 }
 .input-btn{
     width: 27px;
@@ -127,14 +125,23 @@ header {
     border-radius: 5px;
     background-color: var(--very-dark-desaturated-blue);
     height: auto;
-    /* border: 2px solid var(--very-dark-desaturated-blue); */
 }
-.display-todo2{
+
+.display-todo-light{
     background-color: hsl(0, 0%, 100%);
 }
 
+.new-todo {
+    width: 84%;
+    color: var(--light-grayish-blue);
+    align-self: center;
+}
+
+.new-todo-light {
+    color: var(--very-dark-grayish-blue);
+}
+
 .todo{
-    
     background-color: transparent;
     padding: .6em .7em .6em .9em;
     color: var(--light-grayish-blue);
@@ -152,12 +159,11 @@ header {
     border-top-right-radius: 0px;
     display: none;
 }
-.todo2{
+.todo-light{
     color: var(--very-dark-grayish-blue);
 }
 .check-todo{
     width: 87%;
-    /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
     transition: .4s;
@@ -188,11 +194,7 @@ header {
     justify-content: center;
     align-items: center;
 }
-.new-todo{
-    width: 84%;
-    color: var(--light-grayish-blue);
-    align-self: center;
-}
+
 .checked-todo{
     text-decoration: line-through;
     color: var(--dark-grayish-blue);

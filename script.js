@@ -1,3 +1,4 @@
+const theme = document.querySelector(".theme")
 const bodyTheme = document.querySelector(".body-bg")
 const selectTheme = document.querySelector(".theme")
 const todoBackgroundImage = document.querySelector(".todo-img")
@@ -9,47 +10,32 @@ const inputTodoBg = document.querySelector(".input-todo")
 const todoList = document.querySelector(".todo-content")
 const displayTodoListItems = document.querySelector(".display-todo")
 const todoBg = document.querySelector(".todo")
-const displayedTodos = document.querySelectorAll(".todo").values
+const todoText = document.querySelectorAll(".todo-content")
 const todoArr = []
 let todoNum = 0
 const todoItemsList = []
 let numberOfTodo = 0
 
-// class Todo{
-//     constructor(){
+theme.addEventListener("click", () => {
+    bodyTheme.classList.toggle("body-bg-light")
+    todoBackgroundImage.classList.toggle("todo-img-light")
+    inputTodoBg.classList.toggle("input-todo-light")
+    newTodo.classList.toggle("type-todo-light")
+    displayTodoListItems.classList.toggle("display-todo-light")
+    todoText.forEach(item => item.classList.toggle("new-todo-light"))
+})
 
-//     }
-// }
-
-let darkMode = true
 lightTheme.addEventListener("click", () => {
-    darkMode = false
     lightTheme.style.display = "none"
     darkTheme.style.display = "block"
-    bodyTheme.classList.add("body-bg2")
-    todoBackgroundImage.classList.add("todo-img2")
-    inputTodoBg.classList.add("input-todo2")
-    newTodo.classList.add("type-todo2")
-    displayTodoListItems.classList.add("display-todo2")
-    // todoBg.classList.add("todo2")
 })
+
 darkTheme.addEventListener("click", () => {
-    darkMode = true
     darkTheme.style.display = "none"
     lightTheme.style.display = "block"
-    bodyTheme.classList.remove("body-bg2")
-    todoBackgroundImage.classList.remove("todo-img2")
-    inputTodoBg.classList.remove("input-todo2")
-    newTodo.classList.remove("type-todo2")
-    displayTodoListItems.classList.remove("display-todo2")
-    // todoBg.classList.remove("todo2")
 })
+
 enterTodo.addEventListener("click", () => {
-    if (darkMode == true) {
-        displayTodoListItems.style.border = "2px solid var(--very-dark-desaturated-blue)"
-    } else {
-        displayTodoListItems.style.border = "2px solid hsl(0, 0%, 100%)"
-    }
     document.querySelector(".display-todo").style.display = "block"
     displayTodoList()
 })
@@ -131,7 +117,6 @@ function updateTodoNum() {
 }
 
 function clearCompleted(){
-    console.log("clear")
     const clearCompletedTodo = document.querySelectorAll(".clear-completed-todo")
     clearCompletedTodo.forEach(item => item.style.display = "none")
 }
