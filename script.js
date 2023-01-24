@@ -71,7 +71,11 @@ function displayTodoList() {
         document.querySelector('.todo-info').style.display = "flex";
         //updating number of todo left
         todoNum = todoNum + 1
-        document.querySelector(".todo-number").textContent = `${todoNum} items left`
+        if (todoNum == 1){
+            document.querySelector(".todo-number").textContent = `${todoNum} item left`
+        }else{
+            document.querySelector(".todo-number").textContent = `${todoNum} items left`
+        }
         // updateTodoNum((numberOfTodo + 1))
         //adding todo before the todo info containing number of todo left
         items = document.createElement("div")
@@ -113,10 +117,15 @@ function deleteTodo() {
 }
 
 function updateTodoNum() {
-    document.querySelector(".todo-number").textContent = `${--todoNum} items left`
+    --todoNum
+    if (todoNum == 1) {
+        document.querySelector(".todo-number").textContent = `${todoNum} item left`
+    } else {
+        document.querySelector(".todo-number").textContent = `${todoNum} items left`
+    }
 }
 
-function clearCompleted(){
+function clearCompleted() {
     const clearCompletedTodo = document.querySelectorAll(".clear-completed-todo")
     clearCompletedTodo.forEach(item => item.style.display = "none")
 }
